@@ -71,6 +71,7 @@ body{
 }
 /*--------------------------------------------------------------------------------*/
 
+/* GAME */
 .header{
     text-align: center;
     font-size: 50px;
@@ -83,6 +84,7 @@ body{
     height: 30em;
 }
 
+/* MENU */
 .menu{
     display: flex;
     flex-direction: column;
@@ -123,3 +125,15 @@ body{
     background-color: purple;
 }
 
+.neon-runner{
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: none;
+    opacity: 0;
+    /* animation: blur 4s ease 0s; */
+}

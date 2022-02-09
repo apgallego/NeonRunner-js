@@ -3,6 +3,8 @@
 var gameContainer;
 var newGameButton, optionsButton, creditsButton;
 var progress, progressBar;
+var iframe;
+// var player, background, floor;
 
 function main(){
     gameContainer = document.getElementById('gameContainer');
@@ -13,6 +15,10 @@ function main(){
 
     progressBar = document.getElementById('progressBar');
     progress = document.getElementById('progress');
+
+    // player = document.getElementById('player');
+    // background = document.getElementById('background');
+    // floor = document.getElementById('floor');
 
     newGameButton.addEventListener('mouseover', function(){this.classList.add('selected');});
     newGameButton.addEventListener('mouseout', function(){this.classList.remove('selected');});
@@ -46,6 +52,18 @@ function newGame(){
     }, 1000)
 }
 
+function startGame(){
+    progress.style.display = 'none';
+    progressBar.style.display = 'none';
+    setTimeout(() => {
+        iframe = crearNodo('iframe', gameContainer, 'neonRunner', 'neon-runner', '');
+        iframe.frameborder = 0;
+        iframe.style.opacity = '1';
+        iframe.style.transition = 'opacity 1s';
+        iframe.src = './game.html';
+    }, 1000);
+}
+
 function loadingAnimation() {
     progressBar.style.display = "flex";
     progress.style.display = "flex";
@@ -71,11 +89,6 @@ function loadingAnimation() {
     });
 }
 
-function startGame(){
-    progress.style.display = 'none';
-    progressBar.style.display = 'none';
-}
-
 function options(){
     newGameButton.style.display = 'none';
     creditsButton.style.display = 'none';
@@ -88,6 +101,13 @@ function options(){
         opts[i].addEventListener('mouseout', function(){this.classList.remove('selected');});
     }
 }
+
+/* En caso de usar template */
+// function showContent() {
+//     var temp = document.getElementsByTagName("template")[0];
+//     var clon = temp.content.cloneNode(true);
+//     document.body.appendChild(clon);
+// }
 
 // function keyPressedMenu(ev){
 //     switch(ev.key){
@@ -117,5 +137,14 @@ function options(){
 //             break;
 //     }
 // }
+
+function crearNodo(tipo, padre, id, clase, inner){
+    var nodo = document.createElement(tipo);
+    if(id != '') nodo.id = id;
+    if(clase != '') nodo.className = clase;
+    if(inner != '') nodo.innerHTML = inner;
+    padre.appendChild(nodo);
+    return nodo;
+}
 
 window.onload = main;
