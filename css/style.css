@@ -1,0 +1,125 @@
+/*CSS linked to index.html - 4th Practice :: Web Interfaces Design*/
+@font-face {
+    font-family: arcade;
+    src: url('../assets/fonts/arcade_font.TTF');
+}
+
+*{
+    margin: 5px;
+    padding: 5px;
+    font-family: arcade;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    color: white;
+}
+
+/*pseudoelement for a blurred background-image gif*/
+/* body::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('../img/gifs/background.gif');
+    filter: blur(3px);
+} */
+
+body{
+    background-image: url('../assets/img/gifs/background.gif');
+}
+
+.main-container{
+    margin: auto;
+    width: 90vw;
+    /* height: 90vh; */
+    border: 1px solid white;
+}
+
+.options{
+    width: 200px;
+}
+
+/* -------------------------- ANIMACION (game-container) -------------------------- */
+.main-container {
+    background: linear-gradient(270deg, rgba(153, 0, 255, 0.7), rgba(51, 25, 165, 0.7), rgba(5, 3, 99, 0.7));
+    /* background: linear-gradient(270deg, #9900ff, #3319a5, #050363); */
+    background-size: 600% 600%;
+
+    -webkit-animation: AnimationName 31s ease infinite;
+    -moz-animation: AnimationName 31s ease infinite;
+    -o-animation: AnimationName 31s ease infinite;
+    animation: AnimationName 31s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 88%}
+    50%{background-position:100% 13%}
+    100%{background-position:0% 88%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 88%}
+    50%{background-position:100% 13%}
+    100%{background-position:0% 88%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:0% 88%}
+    50%{background-position:100% 13%}
+    100%{background-position:0% 88%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 88%}
+    50%{background-position:100% 13%}
+    100%{background-position:0% 88%}
+}
+/*--------------------------------------------------------------------------------*/
+
+.header{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.game-container{
+    margin: 50px;    
+    border: 1px solid white;
+    height: 30em;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    text-align: center;
+}
+
+.menu > *:hover, .opt:hover{
+    color: yellow;
+    cursor: pointer;
+}
+.options > *, .credits > * {display: none;}
+
+.selected{text-shadow: 3px 3px 5px black;}
+.selected::before, .selected:hover{
+    content: ' -> ';
+    position: relative;
+}
+
+.progress-bar{
+    margin: auto;
+    display: none;
+    /* visibility: hidden; */
+    width: 80%;
+    height: 50px;
+    border: 1px solid white;
+    position: relative;
+    top: calc(50% - 50px);
+}
+.progress{
+    width: 0%;
+    height: 30px;
+    display: none;
+    color: white;
+    /* visibility: hidden; */
+    background-color: purple;
+}
+
