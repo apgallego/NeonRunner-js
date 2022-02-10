@@ -14,6 +14,10 @@ function jump() {
   }
 }
 
+var animationObstacle = setTimeout(function(){
+  obstacle.style.opacity = '1';
+  obstacle.style.animation = 'block 1s infinite linear';
+}, 2000)
 var run = setInterval(runAnimation, timestamp);
 
 function runAnimation(){
@@ -59,7 +63,8 @@ var isAlive = setInterval(function () {
   var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue("left"));
 
   // detect collision
-  if (runnerTop == obstacleTop && runnerLeft == obstacleLeft) {
+  // if (runnerTop == obstacleTop && runnerLeft == obstacleLeft) {
+  if (obstacleLeft < 50 && obstacleLeft > 0 && runnerTop >= 140) {
     // collision
     // stopGame();
     alert('Te has chocado...');
@@ -67,9 +72,9 @@ var isAlive = setInterval(function () {
 }, 10);
 
 function stopGame(){
-
+  obstacle.style.animation = '';
 }
 
 document.addEventListener("keydown", function (ev) {
-  if(ev.key == 'ArrowUp' || ev.key == 'W' || ev.key == 'w' || ev.key == 'Space') jump();
+  if(ev.key == 'ArrowUp' || ev.key == 'W' || ev.key == 'w' || ev.code == 'Space') jump();
 });

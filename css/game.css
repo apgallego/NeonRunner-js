@@ -80,6 +80,7 @@
   }
   
   #obstacle {
+    opacity: 0;
     width: 20px;
     height: 40px;
     position: relative;
@@ -90,8 +91,6 @@
     background-image: url("../assets/img/cactus.png");
     background-size: 20px 40px;
     z-index: 2;
-  
-    animation: block 1s infinite linear;
   }
   
   @keyframes block {
