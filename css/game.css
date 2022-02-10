@@ -8,48 +8,56 @@
     background-repeat: no-repeat;
   }
   
-  #dino {
-    width: 50px;
-    height: 50px;
-    background-image: url("../assets/img/trex.png");
-    background-size: 50px 50px;
+  #runner {
+    width: 120px;
+    height: 120px;
+    background-image: url("../assets/img/sprite_run_1.png");
+    background-repeat: no-repeat;
+    background-size: 120px 120px;
     position: relative;
-    top: 150px;
+    top: 330px;
+    left: 50px;
   }
   
   .jump {
-    animation: jump 0.3s linear;
+    animation: jump .6s linear;
+    /* transition: all 0.6; */
   }
   
   @keyframes jump {
     0% {
-      top: 150px;
+      top: 330px;
     }
   
     30% {
-      top: 130px;
+      top: 250px;
     }
   
     50% {
-      top: 80px;
+      top: 250px;
+    }
+
+    65% {
+      top: 250px;
     }
   
     80% {
-      top: 130px;
+      top: 250px;
     }
-  
+
     100% {
-      top: 150px;
+      top: 330px;
     }
   }
   
-  #cactus {
+  #obstacle {
     width: 20px;
     height: 40px;
     position: relative;
-    top: 110px;
+    top: 280px;
     left: 580px;
-  
+    border: 1px solid red;
+    background-color: yellow;
     background-image: url("../assets/img/cactus.png");
     background-size: 20px 40px;
   
@@ -58,7 +66,7 @@
   
   @keyframes block {
     0% {
-      left: 580px;
+      left: 780px;
     }
   
     100% {
