@@ -2,7 +2,6 @@ const runner = document.getElementById("runner");
 const obstacle = document.getElementById("obstacle");
 let contador = 1;
 let distancia = 0;
-let aceleracion = 0;
 var timestamp = 300;
 
 function jump() {
@@ -11,7 +10,7 @@ function jump() {
 
     setTimeout(function () {
       runner.classList.remove("jump");
-    }, 300);
+    }, 500);
   }
 }
 
@@ -37,12 +36,12 @@ function runAnimation(){
   
   distancia++;
   console.log(distancia);
-  if(distancia > 20){
+  if(distancia > 50){
     timestamp = 200;
     clearInterval(run);
     run = setInterval(runAnimation, timestamp);
   }
-  if(distancia > 40){
+  if(distancia > 100){
     timestamp = 100;
     clearInterval(run);
     run = setInterval(runAnimation, timestamp);
@@ -51,21 +50,26 @@ function runAnimation(){
 
 
 var isAlive = setInterval(function () {
-  // get current runner Y position
-  // var runnerTop = parseInt(window.getComputedStyle(runner).getPropertyValue("top"));
+  // get current runner X and Y position
+  var runnerTop = parseInt(window.getComputedStyle(runner).getPropertyValue("top"));
+  var runnerLeft = parseInt(window.getComputedStyle(runner).getPropertyValue("left"));
 
-  // get current obstacle X position
-  var obstacleLeft = parseInt(
-    window.getComputedStyle(obstacle).getPropertyValue("left")
-  );
+  // get current obstacle X and Y position
+  var obstacleTop = parseInt(window.getComputedStyle(obstacle).getPropertyValue("top"));
+  var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue("left"));
 
   // detect collision
-  if (obstacleLeft < 50 && obstacleLeft > 0 && runnerTop >= 140) {
+  if (runnerTop == obstacleTop && runnerLeft == obstacleLeft) {
     // collision
-    alert("Game Over!");
+    // stopGame();
+    alert('Te has chocado...');
   }
 }, 10);
 
-document.addEventListener("keydown", function (event) {
-  jump();
+function stopGame(){
+
+}
+
+document.addEventListener("keydown", function (ev) {
+  if(ev.key == 'ArrowUp' || ev.key == 'W' || ev.key == 'w' || ev.key == 'Space') jump();
 });

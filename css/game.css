@@ -6,6 +6,19 @@
     background-image: url("../assets/img/moving_city.gif");
     background-size: cover;
     background-repeat: no-repeat;
+    z-index: -1;
+  }
+
+  #marcador{
+    margin: auto;
+    margin-top: 20px;
+    position: absolute;
+    top: 20px;
+    width: 400px;
+    height: 100px;
+    background-color: black;
+    border: 2px dotted #777;
+    z-index: 3;
   }
   
   #runner {
@@ -17,24 +30,40 @@
     position: relative;
     top: 330px;
     left: 50px;
+    z-index: 2;
+  }
+  
+  #floor{
+    position: relative;
+    top: 265px;
+    width: 100%;
+    height: 30px;
+    border-top: 3px solid black;
+    background-image: url('../assets/img/floor.png');
+    background-size: contain;
+    z-index: 0;
   }
   
   .jump {
-    animation: jump .6s linear;
+    /* animation: jump 0.6s linear; */
     /* transition: all 0.6; */
+    transform-origin: 50% 50%;
+    animation: jump .6s linear alternate infinite;
   }
   
   @keyframes jump {
     0% {
       top: 330px;
     }
-  
+    15%{
+      top: 265px;
+    }
     30% {
-      top: 250px;
+      top: 200px;
     }
   
     50% {
-      top: 250px;
+      top: 200px;
     }
 
     65% {
@@ -42,7 +71,7 @@
     }
   
     80% {
-      top: 250px;
+      top: 300px;
     }
 
     100% {
@@ -55,11 +84,12 @@
     height: 40px;
     position: relative;
     top: 280px;
-    left: 580px;
+    left: 350px;
     border: 1px solid red;
     background-color: yellow;
     background-image: url("../assets/img/cactus.png");
     background-size: 20px 40px;
+    z-index: 2;
   
     animation: block 1s infinite linear;
   }

@@ -82,7 +82,7 @@ function loadingAnimation() {
                 requestAnimationFrame(step);
             } else {
                 progress.style.width = "100%";
-                resolve(setTimeout(startGame, 10));
+                resolve(setTimeout(startGame, 1000));
             }
         }
         requestAnimationFrame(step);
@@ -101,42 +101,6 @@ function options(){
         opts[i].addEventListener('mouseout', function(){this.classList.remove('selected');});
     }
 }
-
-/* En caso de usar template */
-// function showContent() {
-//     var temp = document.getElementsByTagName("template")[0];
-//     var clon = temp.content.cloneNode(true);
-//     document.body.appendChild(clon);
-// }
-
-// function keyPressedMenu(ev){
-//     switch(ev.key){
-//         case 'w':
-//         case 'W':
-//         case 'ArrowUp':
-//              //
-//             break;
-//         case 'a':
-//         case 'A':
-//         case 'ArrowLeft':
-//             //
-//             break;
-//         case 's':
-//         case 'S':
-//         case 'ArrowDown':
-//             //
-//             break;
-//         case 'd':
-//         case 'D':
-//         case 'ArrowRight':
-//             //
-//             break;
-//         case 'Enter':
-//         case 'Space':
-//             //
-//             break;
-//     }
-// }
 
 function crearNodo(tipo, padre, id, clase, inner){
     var nodo = document.createElement(tipo);
