@@ -85,7 +85,7 @@
     height: 40px;
     position: relative;
     top: 280px;
-    left: 350px;
+    left: 1000px;
     border: 1px solid red;
     background-color: yellow;
     background-image: url("../assets/img/cactus.png");
@@ -95,7 +95,7 @@
   
   @keyframes block {
     0% {
-      left: 780px;
+      left: 1000px;
     }
   
     100% {

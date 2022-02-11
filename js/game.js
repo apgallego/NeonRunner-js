@@ -39,7 +39,7 @@ function runAnimation(){
   if(contador > 4) contador = 1;
   
   distancia++;
-  console.log(distancia);
+  // console.log(distancia);
   if(distancia > 50){
     timestamp = 200;
     clearInterval(run);
@@ -52,6 +52,23 @@ function runAnimation(){
   }
 }
 
+// function obstacleAnimation(){
+//   return new Promise((resolve, reject) => {
+//     let obsLeft = 0;
+//     function step(timestamp) {
+//         obsLeft++;
+//         obstacle.style.left = '';
+
+//         if (prog < time) {
+//             requestAnimationFrame(step);
+//         } else {
+//             progress.style.width = "100%";
+//             resolve(setTimeout(startGame, 1000));
+//         }
+//     }
+//     requestAnimationFrame(step);
+//    });
+// }
 
 var isAlive = setInterval(function () {
   // get current runner X and Y position
@@ -64,11 +81,24 @@ var isAlive = setInterval(function () {
 
   // detect collision
   // if (runnerTop == obstacleTop && runnerLeft == obstacleLeft) {
-  if (obstacleLeft < 50 && obstacleLeft > 0 && runnerTop >= 140) {
+    // console.log('Runner: x: ' + runnerLeft + ' // y: ' + runnerTop + '\nObstacle: x: ' + obstacleLeft + ' // y: ' + obstacleTop);
+  // if (obstacleLeft < 50 && obstacleLeft > 0 && runnerTop >= 140) {
     // collision
     // stopGame();
-    alert('Te has chocado...');
-  }
+    // alert('Te has chocado...');
+    // }
+    
+  let runnerCoords = runner.getBoundingClientRect();
+  let obstacleCoords = obstacle.getBoundingClientRect();
+  console.log(runnerCoords);
+  console.log(obstacleCoords);
+  console.log(Math.round(obstacleCoords.x));
+  if (Math.round(runnerCoords.left) >= Math.round(obstacleCoords.left)
+      && Math.round(runnerCoords.left < Math.round(obstacleCoords.lefts + obstacleCoords.width))){	
+        console.log(runnerCoords);
+        console.log(obstacleCoords);
+        alert('perdiste...');
+  } 
 }, 10);
 
 function stopGame(){
