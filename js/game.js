@@ -23,16 +23,16 @@ var run = setInterval(runAnimation, timestamp);
 function runAnimation(){
   switch(contador){
     case 1:
-      runner.style.backgroundImage = 'url(../assets/img/sprite_running_1.png)';
+      runner.style.backgroundImage = 'url(../assets/img/sprites/sprite_running_1.png)';
       break;
     case 2:
-      runner.style.backgroundImage = 'url(../assets/img/sprite_running_2.png)';
+      runner.style.backgroundImage = 'url(../assets/img/sprites/sprite_running_2.png)';
       break;
     case 3:
-      runner.style.backgroundImage = 'url(../assets/img/sprite_running_3.png)';
+      runner.style.backgroundImage = 'url(../assets/img/sprites/sprite_running_3.png)';
       break;
     case 4:
-      runner.style.backgroundImage = 'url(../assets/img/sprite_running_4.png)';
+      runner.style.backgroundImage = 'url(../assets/img/sprites/sprite_running_4.png)';
       break;
   }
   contador++;
@@ -90,11 +90,11 @@ var isAlive = setInterval(function () {
     
   let runnerCoords = runner.getBoundingClientRect();
   let obstacleCoords = obstacle.getBoundingClientRect();
-  console.log(runnerCoords);
-  console.log(obstacleCoords);
-  console.log(Math.round(obstacleCoords.x));
+  // console.log(runnerCoords);
+  // console.log(obstacleCoords);
+  // console.log(Math.round(obstacleCoords.x));
   if (Math.round(runnerCoords.left) >= Math.round(obstacleCoords.left)
-      && Math.round(runnerCoords.left < Math.round(obstacleCoords.lefts + obstacleCoords.width))){	
+      && Math.round(runnerCoords.left < Math.round(obstacleCoords.left + obstacleCoords.width))){	
         console.log(runnerCoords);
         console.log(obstacleCoords);
         alert('perdiste...');
