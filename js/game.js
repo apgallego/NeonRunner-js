@@ -73,32 +73,17 @@ function runAnimation(){
 var isAlive = setInterval(function () {
   // get current runner X and Y position
   var runnerTop = parseInt(window.getComputedStyle(runner).getPropertyValue("top"));
-  var runnerLeft = parseInt(window.getComputedStyle(runner).getPropertyValue("left"));
+  // var runnerLeft = parseInt(window.getComputedStyle(runner).getPropertyValue("left"));
 
   // get current obstacle X and Y position
-  var obstacleTop = parseInt(window.getComputedStyle(obstacle).getPropertyValue("top"));
+  // var obstacleTop = parseInt(window.getComputedStyle(obstacle).getPropertyValue("top"));
   var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue("left"));
 
   // detect collision
-  // if (runnerTop == obstacleTop && runnerLeft == obstacleLeft) {
-    // console.log('Runner: x: ' + runnerLeft + ' // y: ' + runnerTop + '\nObstacle: x: ' + obstacleLeft + ' // y: ' + obstacleTop);
-  // if (obstacleLeft < 50 && obstacleLeft > 0 && runnerTop >= 140) {
-    // collision
+  if (obstacleLeft < 120 && obstacleLeft > 0 && runnerTop >= 300) {
+    //collision
     // stopGame();
-    // alert('Te has chocado...');
-    // }
-    
-  let runnerCoords = runner.getBoundingClientRect();
-  let obstacleCoords = obstacle.getBoundingClientRect();
-  // console.log(runnerCoords);
-  // console.log(obstacleCoords);
-  // console.log(Math.round(obstacleCoords.x));
-  if (Math.round(runnerCoords.left) >= Math.round(obstacleCoords.left)
-      && Math.round(runnerCoords.left < Math.round(obstacleCoords.left + obstacleCoords.width))){	
-        console.log(runnerCoords);
-        console.log(obstacleCoords);
-        alert('perdiste...');
-  } 
+  }
 }, 10);
 
 function stopGame(){
