@@ -1,105 +1,164 @@
+/*CSS linked to game.html - 4th Practice :: Web Interfaces Design*/
+:root {
+  --obstacle-animation: 0;
+}
+
+@font-face {
+  font-family: arcade;
+  src: url('../assets/fonts/arcade_font.TTF');
+}
+
+@font-face {
+  font-family: pixel;
+  src: url('../assets/fonts/pixelmix.ttf');
+}
+
 .game {
-    width: 100%;
-    height: 28.5em;
-    border: 1px solid black;
-    margin: auto;
-    background-image: url("../assets/img/gifs/moving_city.gif");
-    background-size: cover;
-    background-repeat: no-repeat;
-    z-index: -1;
-  }
+  width: 100%;
+  height: 28.5em;
+  border: 1px solid black;
+  margin: auto;
+  overflow: hidden;
+  background-image: url("../assets/img/gifs/moving_city.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
 
-  #marcador{
-    margin: auto;
-    margin-top: 20px;
-    position: absolute;
-    top: 20px;
-    width: 400px;
-    height: 100px;
-    background-color: black;
-    border: 2px dotted #777;
-    z-index: 3;
-  }
-  
-  #runner {
-    width: 120px;
-    height: 120px;
-    background-image: url("../assets/img/sprites/sprite_run_1.png");
-    background-repeat: no-repeat;
-    background-size: 120px 120px;
-    position: relative;
+.pannel{
+  /* margin: auto; */
+  width: 800px;
+  height: 200px;
+  position: absolute;
+  left: calc(50% - 800px / 2);
+  top: calc(50% - 200px / 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-family: arcade;
+  -webkit-text-stroke: 3px black;
+  font-size: 5em;
+  z-index: 4;
+}
+.pannel:hover{color: yellow; cursor: pointer;}
+
+#runner {
+  width: 120px;
+  height: 120px;
+  background-image: url("../assets/img/sprites/sprite_running_1.png");
+  background-repeat: no-repeat;
+  background-size: 120px 120px;
+  position: relative;
+  top: 330px;
+  left: 50px;
+  z-index: 2;
+}
+
+#floor{
+  position: relative;
+  top: 265px;
+  width: 100%;
+  height: 30px;
+  border-top: 3px solid black;
+  background-image: url('../assets/img/sprites/floor.png');
+  background-size: contain;
+  z-index: 0;
+}
+
+.jump {
+  /* animation: jump 0.6s linear; */
+  /* transition: all 0.6; */
+  transform-origin: 50% 50%;
+  animation: jump .6s linear alternate infinite;
+}
+
+@keyframes jump {
+  0% {
     top: 330px;
-    left: 50px;
-    z-index: 2;
   }
-  
-  #floor{
-    position: relative;
+  15%{
     top: 265px;
-    width: 100%;
-    height: 30px;
-    border-top: 3px solid black;
-    background-image: url('../assets/img/sprites/floor.png');
-    background-size: contain;
-    z-index: 0;
   }
-  
-  .jump {
-    /* animation: jump 0.6s linear; */
-    /* transition: all 0.6; */
-    transform-origin: 50% 50%;
-    animation: jump .6s linear alternate infinite;
+  30% {
+    top: 200px;
   }
-  
-  @keyframes jump {
-    0% {
-      top: 330px;
-    }
-    15%{
-      top: 265px;
-    }
-    30% {
-      top: 200px;
-    }
-  
-    50% {
-      top: 200px;
-    }
 
-    65% {
-      top: 250px;
-    }
-  
-    80% {
-      top: 300px;
-    }
-
-    100% {
-      top: 330px;
-    }
+  50% {
+    top: 200px;
   }
-  
-  #obstacle {
-    opacity: 0;
-    width: 20px;
-    height: 40px;
-    position: relative;
-    top: 280px;
+
+  65% {
+    top: 250px;
+  }
+
+  80% {
+    top: 300px;
+  }
+
+  100% {
+    top: 330px;
+  }
+}
+
+#obstacle {
+  opacity: 0;
+  width: 20px;
+  height: 40px;
+  position: relative;
+  top: 280px;
+  left: 1000px;
+  border: 1px solid red;
+  background-color: yellow;
+  background-image: url("../assets/img/sprites/");
+  background-size: 20px 40px;
+  z-index: 2;
+}
+
+@keyframes obstacle {
+  0% {
     left: 1000px;
-    border: 1px solid red;
-    background-color: yellow;
-    background-image: url("../assets/img/sprites/");
-    background-size: 20px 40px;
-    z-index: 2;
   }
-  
-  @keyframes block {
-    0% {
-      left: 1000px;
-    }
-  
-    100% {
-      left: -20px;
-    }
+
+  100% {
+    left: -20px;
   }
-  
+}
+
+.gameOver{
+  animation: gameOver 1s linear;
+}
+
+@keyframes gameOver {
+  0% {
+    top: 330px;
+  }
+
+  50%{
+    top: 280px
+  }
+
+  100% {
+    top: 600px;
+  }
+}
+
+#score{
+  /* margin: auto; */
+  padding: 5px;
+  text-align: center;
+  font-size: 3em;
+  position: absolute;
+  left: calc(50% - 400px / 2);
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 20px;
+  width: 400px;
+  background-color: black;
+  border: 2px dotted #777;
+  color: 0;
+  z-index: 3;
+}

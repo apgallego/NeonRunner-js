@@ -49,7 +49,7 @@ function newGame(){
             progress.style.alignItems = 'center';
             progress.innerHTML = '0%';
             setTimeout(loadingAnimation, 10);
-    }, 1000)
+    }, 10)
 }
 
 function startGame(){
@@ -61,7 +61,7 @@ function startGame(){
         iframe.style.opacity = '1';
         iframe.style.transition = 'opacity 1s';
         iframe.src = './game.html';
-    }, 1000);
+    }, 10);
 }
 
 function loadingAnimation() {
@@ -82,7 +82,7 @@ function loadingAnimation() {
                 requestAnimationFrame(step);
             } else {
                 progress.style.width = "100%";
-                resolve(setTimeout(startGame, 1000));
+                resolve(setTimeout(startGame, 1));
             }
         }
         requestAnimationFrame(step);
