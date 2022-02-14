@@ -29,7 +29,7 @@ function clickStart(){
 }
 
 function updateScore(){
-  console.log('a');
+  // console.log('a');
   distancia = distancia.toString();
   if(distancia.length == 1) distancia = '000' + distancia;
   if(distancia.length == 2) distancia = '00' + distancia;

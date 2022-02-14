@@ -26,12 +26,12 @@ body{
 .options{
     width: 300px;
 }
-.opt{
+.opt, .cre{
     display: flex;
     justify-content: center;
 }
 
-/* -------------------------- ANIMACION (game-container) -------------------------- */
+/* -------------------------- ANIMATION (game-container) -------------------------- */
 .main-container {
     background: linear-gradient(270deg, rgba(153, 0, 255, 0.7), rgba(51, 25, 165, 0.7), rgba(5, 3, 99, 0.7));
     /* background: linear-gradient(270deg, #9900ff, #3319a5, #050363); */
@@ -67,37 +67,71 @@ body{
 
 /* GAME */
 .header{
-    text-align: center;
-    font-size: 50px;
-    font-weight: bold;
+    margin: auto;
+    display: none;
+    background-image: url('../assets/img/misc/neon_runner_1.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 800px;
+    height: 200px;
 }
 
 .game-container{
     margin: 50px;    
     border: 1px solid white;
     height: 30em;
+    background-image: url('../assets/img/gifs/moving_city.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.neon-runner-text{
+    width: 800px;
+    height: 200px;
+    background-image: url('../assets/img/misc/neon_runner_1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    left: calc(50% - 800px / 2);
+    top: calc(50% - 200px / 2);
 }
 
 /* MENU */
 .menu{
+    margin: auto;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 25px;
     text-align: center;
+    width: 400px;
+    height: 200px;
 }
 
+/* .menu > *:hover, .opt:hover{ */
 .menu > *:hover, .opt:hover{
     color: yellow;
     cursor: pointer;
 }
-.options > *, .credits > * {display: none;}
+.opt, .cre{
+    display: none;
+    width: 400px;
+}
 
-.selected{text-shadow: 3px 3px 5px black;}
+.selected{text-shadow: 3px 3px 5px black; font-size: 30px;}
 .selected::before, .selected:hover{
     content: ' -> ';
     position: relative;
+}
+.cre{font-size: 20px}
+#gh-a{text-decoration: none; display: none;}
+.gh{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: yellow;
 }
 
 .progress-bar{
@@ -119,7 +153,7 @@ body{
     background-color: purple;
 }
 
-.neon-runner{
+.neon-runner-game{
     margin: 0;
     padding: 0;
     top: 0;
@@ -129,5 +163,9 @@ body{
     height: 100%;
     border: none;
     opacity: 0;
-    /* animation: blur 4s ease 0s; */
+    animation: blur 4s ease 0s;
+}
+
+.back{
+    display: none;
 }

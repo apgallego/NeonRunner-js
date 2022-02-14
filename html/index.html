@@ -7,36 +7,40 @@
         <title>Neon Runner</title>
         <link rel="stylesheet" href="../css/style.css">
         <script src="../js/main.js"></script>
+        <script src="../js/gameTitleWC.js"></script>
         <!-- <script src="../js/game.js"></script> -->
     </head>
     <body>
+        <audio id="music" loop autoplay>
+            <source src="" type="audio/ogg">
+            <source src="" type="audio/mpeg">
+        </audio>
         <div id="mainContainer" class="main-container">
-            <div class="header">Neon Runner</div>
+            <game-title class="header"></game-title>
         
             <div id="menu" class="menu">
                 <div id="newGame" class="new-game">New Game</div>
-                <div id="options" class="options">Options
-                    <!-- <div class="opt" id="1">Skin</div> -->
-                    <div class="opt" id="2">Controls</div>
-                    <div class="opt" id="3">Sound</div>
-                    <div class="opt" id="4">Music</div>
-                    <!-- <div class="opt" id="5"></div> -->
-                </div>
-                <div id="credits" class="credits">Credits
-                    <div id="authName" class="authName"><a href="github.com/apgallego">apgallego</a></div>
-                    <div id="highschool" class="highschool">IES Clara del Rey</div>
-                </div>
+                <div id="options" class="options">Options</div>
+                
+                <div class="opt" id="opt1">Instructions</div>
+                <div class="opt" id="opt2">Controls</div>
+                <div class="opt" id="opt3">Sounds</div>
+                <div class="opt" id="opt4">Music</div>
+
+                <div id="credits" class="credits">Credits</div>
+
+                <div id="authName" class="auth-name cre">apgallego</div>
+                <a id="gh-a" class="gh cre" href="https://www.github.com/apgallego">GitHub</a>
+                <a id="highschool" class="highschool cre">IES Clara del Rey</a>
+
+                <div id="back" class="back">&lt;-</div>
             </div>
             <div id="gameContainer" class="game-container">
+                <div id="neonRunnerTxt" class="neon-runner-text"></div>
+                <!-- <game-title id="neonRunnerTxt" class="neon-runner-text"></game-title> -->
                 <div id="progressBar" class="progress-bar">
                     <div id="progress" class="progress"></div>
                 </div>
-                <!-- <iframe src="../dino.html" width="98%" height="95%" frameborder="1"></iframe> -->
-                <!-- <template> -->
-                    <!-- <div id="player"></div>
-                    <div id="background"></div>
-                    <div id="floor"></div> -->
-                <!-- </template> -->
             </div>
         </div>
     </body>
