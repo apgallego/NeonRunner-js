@@ -151,11 +151,13 @@ function showCredits(){
 function showInstructions(){
     document.querySelector('.header-bot').style.display = 'none';
     divInfo.style.display = 'flex';
-    divInfo.innerHTML = 'It\'s simple!<br/><br/>Arrow Up, W or Space to jump!';
+    divInfo.innerHTML = 'The goal of this game is to jump as many osbtacles as possible so that you get the highest distance!';
 }
 
 function showControls(){
-
+    document.querySelector('.header-bot').style.display = 'none';
+    divInfo.style.display = 'flex';
+    divInfo.innerHTML = 'It\'s simple!<br/><br/>Arrow Up, W or Space to jump!<br/><br/>Once inside the game, you can also use R or Esc to restart the game.';
 }
 
 function toggleMusic(){
@@ -170,7 +172,12 @@ function back(){
     optionsButton.style.display = 'block';
     newGameButton.style.display = 'block';
     creditsButton.style.display = 'block';
+    instructionsButton.style.display = 'none';
+    controlsButton.style.display = 'none';
+    divInfo.style.display = 'none';
+    musicButton.style.display = 'none';
     backbutton.style.display = 'none';
+    document.querySelector('.header-bot').style.display = 'flex';
 }
 
 //function that creates and returns an HTML element, and gives the possibility to add id, class and innerHTML

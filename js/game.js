@@ -104,13 +104,13 @@ var isAlive = setInterval(function () {
       clearInterval(bgGameOverAnim);
       // runner.classList.remove('gameOver'):
       let gameElems = game.childNodes;
-      for(let i = 0; i < gameElems; i++){
-        gameElems.style.display = 'none';
-      }
+      for(let i = 0; i < gameElems; i++) gameElems.style.display = 'none';
       pannel.style.display = 'flex';
       pannel.style.color = 'red';
       pannel.style.cursor = 'default';
       pannel.innerHTML = 'GAME OVER';
+      document.querySelector('.restart').style.display = 'flex';
+      document.querySelector('.restart').addEventListener('click', () => location.reload());
       pannel.removeEventListener('click', clickStart);
     }).catch(err => alert(err));
   }
@@ -147,6 +147,7 @@ function stopGame(){
 }
 
 document.addEventListener("keydown", function (ev) {
+  if(ev.key == 'R' || ev.key == 'r' || ev.key == 'Esc') location.reload();
   if(!gameOver)
-    if(ev.key == 'ArrowUp' || ev.key == 'W' || ev.key == 'w' || ev.code == 'Space') jump();
+    if(ev.key == 'ArrowUp' || ev.key == 'W' || ev.key == 'w' || ev.key == 'Space') jump();
 });

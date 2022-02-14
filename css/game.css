@@ -37,12 +37,30 @@
   align-items: center;
   text-align: center;
   color: white;
-  font-family: arcade;
+  font-family: arcade, Arial, Helvetica, sans-serif;
   -webkit-text-stroke: 3px black;
   font-size: 5em;
   z-index: 4;
 }
 .pannel:hover{color: yellow; cursor: pointer;}
+
+.restart{
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  top: 65%;
+  left: calc(50% - 100px / 2);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: arcade, Arial, Helvetica, sans-serif;
+  color: yellow;
+  -webkit-text-stroke: 1px black;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 5;
+}
 
 #runner {
   width: 120px;

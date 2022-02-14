@@ -90,16 +90,16 @@ body{
 .info{
     margin: auto;
     position: relative;
-    top: calc(50% - 200px / 2);
+    top: calc(50% - 400px / 2);
     display: none;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     text-align: center;
     width: 80%;
-    height: 200px;
+    height: 400px;
     color: yellow;
-    font-family: arcade;
+    font-family: arcade, Arial, Helvetica, sans-serif;
     -webkit-text-stroke: 1px black;
     font-size: 40px;
 }
