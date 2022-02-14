@@ -37,28 +37,28 @@ body{
     /* background: linear-gradient(270deg, #9900ff, #3319a5, #050363); */
     background-size: 600% 600%;
 
-    -webkit-animation: AnimationName 31s ease infinite;
-    -moz-animation: AnimationName 31s ease infinite;
-    -o-animation: AnimationName 31s ease infinite;
-    animation: AnimationName 31s ease infinite;
+    -webkit-animation: fade 31s ease infinite;
+    -moz-animation: fade 31s ease infinite;
+    -o-animation: fade 31s ease infinite;
+    animation: fade 31s ease infinite;
 }
 
-@-webkit-keyframes AnimationName {
+@-webkit-keyframes fade {
     0%{background-position:0% 88%}
     50%{background-position:100% 13%}
     100%{background-position:0% 88%}
 }
-@-moz-keyframes AnimationName {
+@-moz-keyframes fade {
     0%{background-position:0% 88%}
     50%{background-position:100% 13%}
     100%{background-position:0% 88%}
 }
-@-o-keyframes AnimationName {
+@-o-keyframes fade {
     0%{background-position:0% 88%}
     50%{background-position:100% 13%}
     100%{background-position:0% 88%}
 }
-@keyframes AnimationName {
+@keyframes fade {
     0%{background-position:0% 88%}
     50%{background-position:100% 13%}
     100%{background-position:0% 88%}
@@ -66,7 +66,7 @@ body{
 /*--------------------------------------------------------------------------------*/
 
 /* GAME */
-.header{
+.header-top{
     margin: auto;
     display: none;
     background-image: url('../assets/img/misc/neon_runner_1.png');
@@ -75,6 +75,8 @@ body{
     width: 800px;
     height: 200px;
 }
+.header-top{display: none;}
+.header-bot{display: flex;}
 
 .game-container{
     margin: 50px;    
@@ -85,7 +87,25 @@ body{
     background-size: cover;
 }
 
-.neon-runner-text{
+.info{
+    margin: auto;
+    position: relative;
+    top: calc(50% - 200px / 2);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 80%;
+    height: 200px;
+    color: yellow;
+    font-family: arcade;
+    -webkit-text-stroke: 1px black;
+    font-size: 40px;
+}
+.info > span{color: lime;}
+
+.header-bot{
     width: 800px;
     height: 200px;
     background-image: url('../assets/img/misc/neon_runner_1.png');
@@ -126,9 +146,9 @@ body{
     position: relative;
 }
 .cre{font-size: 20px}
-#gh-a{text-decoration: none; display: none;}
-.gh{
-    display: flex;
+.gh, .highschool{
+    /* text-decoration: none; */
+    display: none;
     justify-content: center;
     align-items: center;
     color: yellow;
@@ -166,6 +186,4 @@ body{
     animation: blur 4s ease 0s;
 }
 
-.back{
-    display: none;
-}
+.back{display: none;}

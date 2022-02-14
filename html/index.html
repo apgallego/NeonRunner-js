@@ -16,28 +16,28 @@
             <source src="" type="audio/mpeg">
         </audio>
         <div id="mainContainer" class="main-container">
-            <game-title class="header"></game-title>
+            <game-title id="headerTop" class="header-top"></game-title>
         
             <div id="menu" class="menu">
                 <div id="newGame" class="new-game">New Game</div>
                 <div id="options" class="options">Options</div>
                 
-                <div class="opt" id="opt1">Instructions</div>
-                <div class="opt" id="opt2">Controls</div>
-                <div class="opt" id="opt3">Sounds</div>
-                <div class="opt" id="opt4">Music</div>
+                <div class="opt" id="opt-instructions">Instructions</div>
+                <div class="opt" id="opt-controls" href="">Controls</div>
+                <div class="opt" id="opt-music">Music</div>
+                <!-- <div class="opt" id="opt4">Sounds</div> -->
 
                 <div id="credits" class="credits">Credits</div>
 
                 <div id="authName" class="auth-name cre">apgallego</div>
                 <a id="gh-a" class="gh cre" href="https://www.github.com/apgallego">GitHub</a>
-                <a id="highschool" class="highschool cre">IES Clara del Rey</a>
+                <a id="highschool" class="highschool cre" href="https://iesclaradelrey.es/portal/index.php/es/">IES Clara del Rey</a>
 
                 <div id="back" class="back">&lt;-</div>
             </div>
             <div id="gameContainer" class="game-container">
-                <div id="neonRunnerTxt" class="neon-runner-text"></div>
-                <!-- <game-title id="neonRunnerTxt" class="neon-runner-text"></game-title> -->
+                <!-- <div id="neonRunnerTxt" class="neon-runner-text"></div> -->
+                <game-title id="headerBot" class="header-bot"></game-title>
                 <div id="progressBar" class="progress-bar">
                     <div id="progress" class="progress"></div>
                 </div>

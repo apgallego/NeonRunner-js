@@ -1,21 +1,20 @@
-// import * as game from 'game.js';
-
-var gameContainer;
-var newGameButton, optionsButton, creditsButton;
-var opts = [], cres = [];
-var neonRunnerText;
+var gameContainer; 
+var newGameButton,
+    optionsButton,
+    creditsButton,
+    instructionsButton,
+    controlsButton,
+    musicButton; //main buttons
+var divInfo; //<p> elements where the instructions or the controls will be displayed
+var opts = [], cres = []; //arrays with the options and the options of the credits
 var progress, progressBar;
-var iframe;
-
+var iframe; //iframe where the game will be placed
 var backbutton;
-
-var music, sounds;
-
-let animationNeonRunnerText;
+let headerTop; //header shown in the upper part of the main container (web component)
 
 function main(){
+    //we get all the elements and store them in different variables
     gameContainer = document.getElementById('gameContainer');
-    
     newGameButton = document.getElementById('newGame');
     optionsButton = document.getElementById('options');
     creditsButton = document.getElementById('credits');
@@ -23,44 +22,52 @@ function main(){
     opts = document.getElementsByClassName('opt');
     cres = document.getElementsByClassName('cre');
 
+    instructionsButton = document.getElementById('opt-instructions');
+    controlsButton = document.getElementById('opt-controls');
+    musicButton = document.getElementById('opt-music');
+
     backbutton = document.getElementById('back');
-    
+
     progressBar = document.getElementById('progressBar');
     progress = document.getElementById('progress');
-    
-    neonRunnerText = document.querySelector('.neon-runner-text');
-    
-    let contadorNeonRunner = 0;
-    animationNeonRunnerText = setInterval(() => {
-        // console.log(neonRunnerText);
-        if(contadorNeonRunner % 2 == 0) neonRunnerText.style.backgroundImage = 'url(../assets/img/misc/neon_runner_1.png)';
-        else neonRunnerText.style.backgroundImage = 'url(../assets/img/misc/neon_runner_2.png)';
-        contadorNeonRunner++;
-        // console.log('skere');
-    }, 500);
 
+    headerTop = document.getElementById('headerTop');
+
+    //we also create the <p> element where the instructions and the controls will be displayed
+    divInfo = createNode('div', gameContainer, 'info', 'info', '');
+
+    //we add listeners to all the 'buttons' (for functionality and style)
     newGameButton.addEventListener('mouseover', function(){this.classList.add('selected');});
     newGameButton.addEventListener('mouseout', function(){this.classList.remove('selected');});
     optionsButton.addEventListener('mouseover', function(){this.classList.add('selected');});
     optionsButton.addEventListener('mouseout', function(){this.classList.remove('selected');});
     creditsButton.addEventListener('mouseover', function(){this.classList.add('selected');});
     creditsButton.addEventListener('mouseout', function(){this.classList.remove('selected');});
+    instructionsButton.addEventListener('mouseover', function(){this.classList.add('selected');});
+    instructionsButton.addEventListener('mouseout', function(){this.classList.remove('selected');});
+    controlsButton.addEventListener('mouseover', function(){this.classList.add('selected');});
+    controlsButton.addEventListener('mouseout', function(){this.classList.remove('selected');});
+    musicButton.addEventListener('mouseover', function(){this.classList.add('selected');});
+    musicButton.addEventListener('mouseout', function(){this.classList.remove('selected');});
 
     newGameButton.addEventListener('click', newGame);
     optionsButton.addEventListener('click', showOptions);
     creditsButton.addEventListener('click', showCredits);
+    instructionsButton.addEventListener('click', showInstructions);
+    controlsButton.addEventListener('click', showControls);
+    musicButton.addEventListener('click', toggleMusic);
 
     backbutton.addEventListener('click', back);
 }
 
+//function to start the animation after the new game
 function newGame(){
     document.getElementById('menu').style.display = 'none'; 
     gameContainer.style.backgroundImage = 'none';
     gameContainer.style.backgroundColor = 'black';
     gameContainer.style.transition = 'background-color 1s';
-    neonRunnerText.style.display = 'none';
-    document.querySelector('.header').style.display = 'flex';
-    clearInterval(neonRunnerText);
+    document.querySelector('.header-bot').style.display = 'none';
+    headerTop.style.display = 'flex';
     setTimeout( () => {
         progressBar.style.display = 'flex';
         progress.style.display = 'flex';
@@ -71,6 +78,7 @@ function newGame(){
     }, 1000)
 }
 
+//function that creates the frame where the game is
 function startGame(){
     progress.style.display = 'none';
     progressBar.style.display = 'none';
@@ -83,6 +91,7 @@ function startGame(){
     }, 1000);
 }
 
+//function that recreates a loading animation with a progress bar
 function loadingAnimation() {
     progressBar.style.display = "flex";
     progress.style.display = "flex";
@@ -91,6 +100,8 @@ function loadingAnimation() {
 
     return new Promise((resolve, reject) => {
         function step(timestamp) {
+            console.log(start);
+            console.log(timestamp);
             if (!start) start = timestamp;
             var prog = timestamp - start;
             let barProg = ((prog * 100) / time);
@@ -100,20 +111,18 @@ function loadingAnimation() {
                 requestAnimationFrame(step);
             } else {
                 progress.style.width = "100%";
-                resolve(setTimeout(startGame, 1));
+                resolve(setTimeout(startGame, 1000));
             }
         }
         requestAnimationFrame(step);
     });
 }
 
+//function that shows all the options available and hides the rest of the menu
 function showOptions(){
-    // console.log(this);
     this.style.display = 'none';
     newGameButton.style.display = 'none';
     creditsButton.style.display = 'none';
-    // this.removeEventListener('mouseover', function(){this.classList.add('selected');});
-    // this.removeEventListener('mouseout', function(){this.classList.remove('selected');});
     this.classList.remove('selected');
     backbutton.style.display = 'block';
     for(let i = 0; i < opts.length; i++){
@@ -123,21 +132,37 @@ function showOptions(){
     }
 }
 
+//function that shows all the options of the credits available and hides the rest of the menu
 function showCredits(){
     this.style.display = 'none';
     newGameButton.style.display = 'none';
     optionsButton.style.display = 'none';
-    // this.removeEventListener('mouseover', function(){this.classList.add('selected');});
-    // this.removeEventListener('mouseout', function(){this.classList.remove('selected');});
     this.classList.remove('selected');
     backbutton.style.display = 'block';
     for(let i = 0; i < cres.length; i++){
         cres[i].style.display = 'flex';
-        cres[i].addEventListener('mouseover', function(){this.classList.add('selected');});
-        cres[i].addEventListener('mouseout', function(){this.classList.remove('selected');});
+        if(cres[i].id != 'authName'){
+            cres[i].addEventListener('mouseover', function(){this.classList.add('selected');});
+            cres[i].addEventListener('mouseout', function(){this.classList.remove('selected');});
+        }
     }
 }
 
+function showInstructions(){
+    document.querySelector('.header-bot').style.display = 'none';
+    divInfo.style.display = 'flex';
+    divInfo.innerHTML = 'It\'s simple!<br/><br/>Arrow Up, W or Space to jump!';
+}
+
+function showControls(){
+
+}
+
+function toggleMusic(){
+    
+}
+
+//function that simulates 'going back' (it hides or displays the necessary elements)
 function back(){
     console.log(optionsButton);
     for(let opt of opts) opt.style.display = 'none';
@@ -148,6 +173,7 @@ function back(){
     backbutton.style.display = 'none';
 }
 
+//function that creates and returns an HTML element, and gives the possibility to add id, class and innerHTML
 function createNode(tipo, padre, id, clase, inner){
     var nodo = document.createElement(tipo);
     if(id != '') nodo.id = id;
@@ -157,4 +183,5 @@ function createNode(tipo, padre, id, clase, inner){
     return nodo;
 }
 
+//when everything loads, main funcion is executed
 window.onload = main;
