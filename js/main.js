@@ -56,13 +56,6 @@ function main(){
     musicButton.addEventListener('click', toggleMusic);
 
     backbutton.addEventListener('click', back);
-    
-    //timout for audio autoplay (doesn't always work...)
-    // setTimeout(function(){
-    //     music.load();
-    //     music.volume = 0.05;
-    //     music.play();
-    // }, 10);
 }
 
 //function to start the animation after the new game
