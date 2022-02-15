@@ -6,8 +6,21 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/game.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/fx.js"></script>
   </head>
   <body>
+    <audio id="jumpFX">
+      <source src="../assets/audio/fx/Videogame Jump Sound Effect HD No Copyright.ogg" type="audio/ogg">
+      <source src="../assets/audio/fx/Videogame Jump Sound Effect HD No Copyright.mp3" type="audio/mpeg">
+    <!-- Your browser does not support the audio element. -->
+    </audio>
+
+    <audio id="gameOverFX">
+      <source src="../assets/audio/fx/Game Over Noise (Arcade Game) Sound Effect - No Copyright (HD).ogg" type="audio/ogg">
+      <source src="../assets/audio/fx/Game Over Noise (Arcade Game) Sound Effect - No Copyright (HD).mp3" type="audio/mpeg">
+    <!-- Your browser does not support the audio element. -->
+    </audio>
+
     <div class="pannel">CLICK HERE TO PLAY!</div>
     <div class="restart">Restart</div>
     <div id="score">0000</div>

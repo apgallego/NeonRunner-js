@@ -5,6 +5,8 @@ var newGameButton,
     instructionsButton,
     controlsButton,
     musicButton; //main buttons
+var music;
+var musicPlaying = true;
 var divInfo; //<p> elements where the instructions or the controls will be displayed
 var opts = [], cres = []; //arrays with the options and the options of the credits
 var progress, progressBar;
@@ -18,19 +20,15 @@ function main(){
     newGameButton = document.getElementById('newGame');
     optionsButton = document.getElementById('options');
     creditsButton = document.getElementById('credits');
-
     opts = document.getElementsByClassName('opt');
     cres = document.getElementsByClassName('cre');
-
     instructionsButton = document.getElementById('opt-instructions');
     controlsButton = document.getElementById('opt-controls');
     musicButton = document.getElementById('opt-music');
-
+    music = document.getElementById('music'); //the music too
     backbutton = document.getElementById('back');
-
     progressBar = document.getElementById('progressBar');
     progress = document.getElementById('progress');
-
     headerTop = document.getElementById('headerTop');
 
     //we also create the <p> element where the instructions and the controls will be displayed
@@ -58,6 +56,13 @@ function main(){
     musicButton.addEventListener('click', toggleMusic);
 
     backbutton.addEventListener('click', back);
+    
+    //timout for audio autoplay
+    setTimeout(function(){
+        music.load();
+        music.volume = 0.01;
+        music.play();
+    }, 10);
 }
 
 //function to start the animation after the new game
@@ -100,8 +105,8 @@ function loadingAnimation() {
 
     return new Promise((resolve, reject) => {
         function step(timestamp) {
-            console.log(start);
-            console.log(timestamp);
+            // console.log(start);
+            // console.log(timestamp);
             if (!start) start = timestamp;
             var prog = timestamp - start;
             let barProg = ((prog * 100) / time);
@@ -148,25 +153,39 @@ function showCredits(){
     }
 }
 
+//function that displays the instructions of the game
 function showInstructions(){
     document.querySelector('.header-bot').style.display = 'none';
     divInfo.style.display = 'flex';
     divInfo.innerHTML = 'The goal of this game is to jump as many osbtacles as possible so that you get the highest distance!';
 }
 
+//function that displays the controls
 function showControls(){
     document.querySelector('.header-bot').style.display = 'none';
     divInfo.style.display = 'flex';
     divInfo.innerHTML = 'It\'s simple!<br/><br/>Arrow Up, W or Space to jump!<br/><br/>Once inside the game, you can also use R or Esc to restart the game.';
 }
 
+//function that toggles music when clicking the music button (it changes its style too)
 function toggleMusic(){
-    
+    if(musicPlaying){
+        musicPlaying = false;
+        music.muted = true;
+        musicButton.style.color = 'red';
+    } else {
+        musicPlaying = true;
+        music.load();
+        music.muted = false;
+        music.volume = 0.01;
+        music.play();
+        musicButton.style.color = 'white';
+    }
 }
 
 //function that simulates 'going back' (it hides or displays the necessary elements)
 function back(){
-    console.log(optionsButton);
+    // console.log(optionsButton);
     for(let opt of opts) opt.style.display = 'none';
     for(let cre of cres) cre.style.display = 'none';
     optionsButton.style.display = 'block';

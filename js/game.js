@@ -3,19 +3,19 @@ const runner = document.getElementById("runner");
 const obstacle = document.getElementById("obstacle");
 
 var gameOver = true;
-
 let contador = 1;
 let distancia = 0;
 var timestamp = 100;
 var obstacleSpeed = 1;
-
 var score;
-
 var bgGameOverAnim, gameOverAnim;
+var jumpFX = document.getElementById('jumpFX');
+var gameOverFX = document.getElementById('gameOverFX');
 
 var pannel = document.querySelector('.pannel');
 pannel.addEventListener('click', clickStart);
 
+//function that starts the game when clicking the pannel
 function clickStart(){
   this.style.display = 'none';
   score.style.opacity = '1';
@@ -28,6 +28,7 @@ function clickStart(){
   }, 2000)
 }
 
+//function that automatically updates the score
 function updateScore(){
   // console.log('a');
   distancia = distancia.toString();
@@ -38,17 +39,23 @@ function updateScore(){
   score.innerHTML = distancia + 'm';
 }
 
+//function for the jump animation
 function jump() {
-  if (runner.classList != "jump") {
-    runner.classList.add("jump");
+  if (runner.classList != 'jump') {
+    runner.classList.add('jump');
+    jumpFX.load();
+    jumpFX.volume = 0.03;
+    jumpFX.play();
     setTimeout(function () {
-      runner.classList.remove("jump");
+      runner.classList.remove('jump');
     }, 500);
   }
 }
 
+//interval to repeat the run animation
 var run = setInterval(runAnimation, timestamp);
 
+//function that recreates the run animation by changing sprites (it does it once, so we need the previous interval to loop it)
 function runAnimation(){
   switch(contador){
     case 1:
@@ -67,17 +74,11 @@ function runAnimation(){
   contador++;
   if(!gameOver){
     distancia++;
-    /* to fix */
     if(distancia % 20 == 0 && distancia <= 1000){
       // console.log('si');
-      obstacleSpeed -= 0.0005;
+      obstacleSpeed -= 0.001;
       obstacle.style.animation = `obstacle ${obstacleSpeed}s infinite linear`;
     }
-    /* for the boost situation */
-    // if(boost){
-    //   timestamp = 50;
-    //   run = setInterval(runAnimation, timestamp);
-    // }
   }
   score = document.getElementById('score');
   updateScore();
@@ -85,26 +86,33 @@ function runAnimation(){
   if(contador >= 4) contador = 1;
 }
 
+//interval that checks if the player is alive, detects collisions and, if so, stops the game
 var isAlive = setInterval(function () {
-  // get current runner X and Y position
-  var runnerTop = parseInt(window.getComputedStyle(runner).getPropertyValue("top"));
+  /* get current runner X and Y position */
+  // var runnerTop = parseInt(window.getComputedStyle(runner).getPropertyValue("top"));
   // var runnerLeft = parseInt(window.getComputedStyle(runner).getPropertyValue("left"));
-
-  // get current obstacle X and Y position
+  
+  /* get current obstacle X and Y position */
   // var obstacleTop = parseInt(window.getComputedStyle(obstacle).getPropertyValue("top"));
-  var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue("left"));
+  // var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue("left"));
+  
+  /* using this function you can get much more data from the element */
+  var runnerCoords = runner.getBoundingClientRect();
+  var obstacleCoords = obstacle.getBoundingClientRect();
 
   // detect collision
-  if (obstacleLeft < 120 && obstacleLeft > 0 && runnerTop >= 300) {
+  if (obstacleCoords.left < 120 && obstacleCoords.left > 0 && runnerCoords.top >= 300) {
     //collision
     stopGame()
     .then( () => {
-      console.log('then');
+      // console.log('then');
       // clearTimeout(gameOverAnim);
       clearInterval(bgGameOverAnim);
       // runner.classList.remove('gameOver'):
       let gameElems = game.childNodes;
       for(let i = 0; i < gameElems; i++) gameElems.style.display = 'none';
+      gameOverFX.load();
+      gameOverFX.play();
       pannel.style.display = 'flex';
       pannel.style.color = 'red';
       pannel.style.cursor = 'default';
@@ -116,6 +124,7 @@ var isAlive = setInterval(function () {
   }
 }, 10);
 
+//function that stops the game
 function stopGame(){
   gameOver = true;  
   runner.classList.remove('jump');
@@ -146,6 +155,7 @@ function stopGame(){
   })
 }
 
+//events required to play the game
 document.addEventListener("keydown", function (ev) {
   if(ev.key == 'R' || ev.key == 'r' || ev.key == 'Esc') location.reload();
   if(!gameOver)
