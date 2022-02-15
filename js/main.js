@@ -6,7 +6,7 @@ var newGameButton,
     controlsButton,
     musicButton; //main buttons
 var music; //music (audio element)
-var musicPlaying = true;
+var musicPlaying = false;
 var divInfo; //<p> elements where the instructions or the controls will be displayed
 var opts = [], cres = []; //arrays with the options and the options of the credits
 var progress, progressBar;
@@ -58,11 +58,11 @@ function main(){
     backbutton.addEventListener('click', back);
     
     //timout for audio autoplay (doesn't always work...)
-    setTimeout(function(){
-        music.load();
-        music.volume = 0.05;
-        music.play();
-    }, 10);
+    // setTimeout(function(){
+    //     music.load();
+    //     music.volume = 0.05;
+    //     music.play();
+    // }, 10);
 }
 
 //function to start the animation after the new game

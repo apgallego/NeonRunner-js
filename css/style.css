@@ -12,6 +12,7 @@
     color: white;
 }
 
+/* Body, container and some options */
 body{background-image: url('../assets/img/gifs/background.gif');}
 .main-container{
     margin: auto;
@@ -117,6 +118,7 @@ body{background-image: url('../assets/img/gifs/background.gif');}
     display: none;
     width: 400px;
 }
+#opt-music{color: red;}
 
 .selected{text-shadow: 3px 3px 5px black; font-size: 30px;}
 .selected::before, .selected:hover{
