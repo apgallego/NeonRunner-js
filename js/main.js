@@ -5,7 +5,7 @@ var newGameButton,
     instructionsButton,
     controlsButton,
     musicButton; //main buttons
-var music;
+var music; //music (audio element)
 var musicPlaying = true;
 var divInfo; //<p> elements where the instructions or the controls will be displayed
 var opts = [], cres = []; //arrays with the options and the options of the credits
@@ -57,10 +57,10 @@ function main(){
 
     backbutton.addEventListener('click', back);
     
-    //timout for audio autoplay
+    //timout for audio autoplay (doesn't always work...)
     setTimeout(function(){
         music.load();
-        music.volume = 0.01;
+        music.volume = 0.05;
         music.play();
     }, 10);
 }
@@ -90,9 +90,9 @@ function startGame(){
     setTimeout(() => {
         iframe = createNode('iframe', gameContainer, 'neonRunner', 'neon-runner-game', '');
         iframe.frameborder = 0;
+        iframe.src = './game.html';
         iframe.style.opacity = '1';
         iframe.style.transition = 'opacity 1s';
-        iframe.src = './game.html';
     }, 1000);
 }
 
@@ -177,7 +177,7 @@ function toggleMusic(){
         musicPlaying = true;
         music.load();
         music.muted = false;
-        music.volume = 0.01;
+        music.volume = 0.05;
         music.play();
         musicButton.style.color = 'white';
     }

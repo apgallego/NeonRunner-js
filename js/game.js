@@ -30,7 +30,7 @@ function clickStart(){
 
 //function that automatically updates the score
 function updateScore(){
-  // console.log('a');
+  // console.log('updateScore');
   distancia = distancia.toString();
   if(distancia.length == 1) distancia = '000' + distancia;
   if(distancia.length == 2) distancia = '00' + distancia;
@@ -75,7 +75,7 @@ function runAnimation(){
   if(!gameOver){
     distancia++;
     if(distancia % 20 == 0 && distancia <= 1000){
-      // console.log('si');
+      // console.log('check speed');
       obstacleSpeed -= 0.001;
       obstacle.style.animation = `obstacle ${obstacleSpeed}s infinite linear`;
     }
@@ -140,16 +140,16 @@ function stopGame(){
     else game.style.backgroundImage = 'none';
     contGameOver++;
     // console.log(contGameOver);
-    // console.log('ese de aqui o lo que sea');
+    // console.log('after contGameOver');
   }, 200);
   return new Promise((resolve, reject) => {
     gameOverAnim = setTimeout( () => {
-      // console.log('pre promesa');
+      // console.log('before promise');
       runner.style.backgroundImage = 'url(../assets/img/sprites/dead.png)';
       runner.classList.add('gameOver');
       runner.style.top = '600px';
       clearInterval(isAlive);
-      // console.log('promesa');
+      // console.log('promise');
       resolve(gameOverAnim);
     }, 2000);
   })
@@ -157,7 +157,7 @@ function stopGame(){
 
 //events required to play the game
 document.addEventListener("keydown", function (ev) {
-  if(ev.key == 'R' || ev.key == 'r' || ev.key == 'Esc') location.reload();
+  if(ev.key == 'R' || ev.key == 'r' || ev.key == 'Escape') location.reload();
   if(!gameOver)
-    if(ev.key == 'ArrowUp' || ev.key == 'W' || ev.key == 'w' || ev.key == 'Space') jump();
+    if(ev.key == 'ArrowUp' || ev.key == 'W' || ev.key == 'w' || ev.code == 'Space') jump();
 });

@@ -13,6 +13,7 @@
   src: url('../assets/fonts/pixelmix.ttf');
 }
 
+/* GAME */
 .game {
   width: 99%;
   height: 28.5em;
@@ -44,24 +45,6 @@
 }
 .pannel:hover{color: yellow; cursor: pointer;}
 
-.restart{
-  width: 100px;
-  height: 40px;
-  position: absolute;
-  top: 65%;
-  left: calc(50% - 100px / 2);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-family: arcade, Arial, Helvetica, sans-serif;
-  color: orange;
-  -webkit-text-stroke: 1px black;
-  font-size: 25px;
-  cursor: pointer;
-  z-index: 5;
-}
-
 #runner {
   width: 120px;
   height: 120px;
@@ -85,6 +68,44 @@
   z-index: 0;
 }
 
+#score{
+  /* margin: auto; */
+  padding: 5px;
+  text-align: center;
+  font-size: 3em;
+  position: absolute;
+  left: calc(50% - 400px / 2);
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 20px;
+  width: 400px;
+  background-color: black;
+  border: 2px dotted #777;
+  color: 0;
+  z-index: 3;
+}
+
+.restart{
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  top: 65%;
+  left: calc(50% - 100px / 2);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: arcade, Arial, Helvetica, sans-serif;
+  color: orange;
+  -webkit-text-stroke: 1px black;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+/* Jump animation */
 .jump {
   /* animation: jump 0.6s linear; */
   /* transition: all 0.6; */
@@ -120,6 +141,7 @@
   }
 }
 
+/* Obstacle element and animation*/
 #obstacle {
   opacity: 0;
   width: 80px;
@@ -127,12 +149,9 @@
   position: relative;
   top: 270px;
   left: 1000px;
-  /* border: 1px solid red; */
-  /* background-color: yellow; */
   background-image: url("../assets/img/sprites/obstacle.png");
   background-repeat: no-repeat;
   background-size: contain;
-  /* background-size: 20px 40px; */
   z-index: 2;
 }
 
@@ -146,6 +165,7 @@
   }
 }
 
+/* Game Over animation */
 .gameOver{
   animation: gameOver 1s linear;
 }
@@ -162,23 +182,4 @@
   100% {
     top: 600px;
   }
-}
-
-#score{
-  /* margin: auto; */
-  padding: 5px;
-  text-align: center;
-  font-size: 3em;
-  position: absolute;
-  left: calc(50% - 400px / 2);
-  opacity: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 20px;
-  width: 400px;
-  background-color: black;
-  border: 2px dotted #777;
-  color: 0;
-  z-index: 3;
 }
